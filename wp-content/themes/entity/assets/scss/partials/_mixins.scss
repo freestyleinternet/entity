@@ -4,14 +4,38 @@
 */
 @mixin bp($point) {
 	@if $point == desktop {
-		@media (min-width : 960px) { @content; }
+		@media (min-width : 940px) { @content; }
 	}
 	@if $point == tablet {
 		@media (min-width : 768px) { @content; }
 	}
+	@else if $point == phonelandscape {
+		@media (min-width : 400px) { @content; }
+	}
 	@else if $point == phone {
 		@media (min-width : 300px) { @content; }
 	}
+}
+
+/*
+ * Background box
+*/
+@mixin boxstyle {
+	border:1px solid $brand-dark;
+	border-radius:5px;
+	@include background(linear-gradient(#f0f0f0, #e7e7e7) left repeat);
+	box-shadow:1px 1px 3px 1px #dcdbdb;
+}
+
+/*
+ * Boarder box
+*/
+@mixin borderbox {
+	border:1px solid $brand-dark;
+	padding:5px;
+	background:#fff;
+	box-shadow:1px 1px 1px 1px #dcdbdb;
+	border:1px solid $brand-dark;
 }
 
 /*

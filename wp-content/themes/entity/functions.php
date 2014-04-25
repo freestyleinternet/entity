@@ -26,16 +26,8 @@ Misc Theme Functions
 // add featured image support
 function custom_image_sizes() {
     add_theme_support('post-thumbnails');
-	add_image_size('slide', 480, 370, TRUE);
-	add_image_size('slidesub', 620, 250, TRUE);
-	add_image_size('slidecasestudy', 960, 376, TRUE);
-    add_image_size('quotefeature', 220, 156, TRUE);
-	add_image_size('customthumb', 147, 190, TRUE);
-	add_image_size('newsthumb', 140, 99, TRUE);
-	add_image_size('person', 160, 999, TRUE);
-	add_image_size('smallthumb', 60, 40, TRUE);
-	add_image_size('medthumb', 70, 40, TRUE);
-	add_image_size('iso', 68, 52, TRUE);
+	add_image_size('slide', 940, 300, TRUE);
+
 }
 add_action('after_setup_theme', 'custom_image_sizes');
 

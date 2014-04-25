@@ -1,56 +1,58 @@
-                <footer>
-                    <div class="wrapper"> 
-                        <div class="foot1">
-							<?php
-                                wp_nav_menu(
-                                    array(
-                                    'menu'		  => 'general-footer',
-                                    'container'       => '',
-                                    'menu_class'	=> 'general'
-                                ));
-                            ?>
+                <div class="wrapper">
+                    <footer>
+                        
+                        <div class="foot-col">
+                        	<h2>About us</h2>
+                            <ul>
+                                <li><a href="#">Vision &amp; values</a></li>
+                            </ul>
+                            <h2>Solutions</h2>
+                            <ul>
+                                <li><a href="#">Overview</a></li>
+                                <li><a href="#">Governance</a></li>
+                                <li><a href="#">Structured Data</a></li>
+                                <li><a href="#">Unstructured Data</a></li>
+                                <li><a href="#">Meta Data</a></li>
+                                <li><a href="#">Master Data</a></li>
+                                <li><a href="#">Reference Data</a></li>
+                                <li><a href="#">Output</a></li>
+                            </ul>
                         </div>
-                        <div class="foot2">
-                        	<h2>Our Services</h2>
-                            <?php
-                                wp_nav_menu(
-                                    array(
-                                    'menu'		  => 'our-services',
-                                    'container'       => '',
-                                    'menu_class'	=> 'services'
-                                ));
-                            ?>
+                        
+                        <div class="foot-col">
+                        	<h2>Sectors</h2>
+                            <ul>
+                                <li><a href="#">Finance &amp; Insurance</a></li>
+                                <li><a href="#">Central Government &amp; Municipalities</a></li>
+                                <li><a href="#">Automotive</a></li>
+                                <li><a href="#">Transport Facilities</a></li>
+                                <li><a href="#">Healthcare &amp; Pharmaceutical</a></li>
+                            </ul>
+                            <h2>Products</h2>
+                            <ul>
+                                <li><a href="#">Enterprise Information </a></li>
+                                <li><a href="#">Management – Strategy Study</a></li>
+                                <li><a href="#">Single View Citizen</a></li>
+                                <li><a href="#">Single View Patient</a></li>
+                                <li><a href="#">Global Identity Master</a></li>
+                            </ul>
                         </div>
-                      <div class="foot3">
-                       	<h2>The CHK Group</h2>
-                          
-						  <?php while(the_repeater_field('our_partners', 19)): ?>
-                          <article>
-                            <a href="<?php echo the_sub_field('partner_website_link'); ?>">
-                                <img class="borderbox" src="<?php echo the_sub_field('partner_featured_image'); ?>" alt="<?php echo the_sub_field('partner_name'); ?>"/>
-                                <div class="vertical-align"><h1><?php echo the_sub_field('partner_name'); ?></h1></div> 
-                            </a>
-                          </article>
-                          <?php  endwhile; ?>
-                          
-                        </div>
-                        <div class="foot4">
-                       		<h2>STANDARDS</h2>
-                            <?php while(the_repeater_field('website_standards_footer', 19)): ?>
-                          <article class="sponsor ">
-                            <a href="<?php echo the_sub_field('link_to_a_page'); ?>">
-                                <img class="borderbox" src="<?php echo the_sub_field('logo_file'); ?>" alt="<?php echo the_sub_field('pdescription'); ?>"/>
-                                <div class="vertical-align second"><h1><?php echo the_sub_field('description'); ?></h1></div> 
-                            </a>
-                          </article>
-                          <?php  endwhile; ?>
-                        </div>
-                    </div>
-                </footer>
-    
+                        
+                        <div class="foot-col">
+                            <ul>
+                                <li><a href="#">Finance &amp; Insurance</a></li>
+                                <li><a href="#">Central Government &amp; Municipalities</a></li>
+                                <li><a href="#">Automotive</a></li>
+                                <li><a href="#">Transport Facilities</a></li>
+                                <li><a href="#">Healthcare &amp; Pharmaceutical</a></li>
+                            </ul>
+						</div>
+                        
+                    </footer>
+                </div>
+
     		</div> <!-- End of pageContent -->
-    	</div> <!-- End of mobileContainer -->
-    </div> <!-- End of page -->  
+ 
     <?php wp_footer(); ?>
 </body>
 </html>
