@@ -178,7 +178,7 @@ aside {
 			margin-right:0;
 		}
 	}
-	@include bp(desktop) {
+	@include bp(tablet) {
 		width:23.40425531914894%; /* 220 / 940*/
 		min-height:em(190);
 		margin-right:2.12765957446809%;  /* 20 / 940 */
