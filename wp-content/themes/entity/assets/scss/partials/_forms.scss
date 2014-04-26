@@ -33,14 +33,19 @@ label {
 }
 input, textarea {
 	float:left;
+	width:75%;
 	display:block;
 	font-size:em(14);
 	padding:em(3) em(5);
 	border-radius:em(5);
 	border:1px solid $brand-dark;
+	@include bp(tablet) {
+		width:auto;
+	}
 }
 
 input.search-submit {
+	float:right;
 	width:8px;
 	height:15px;
 	border:none;

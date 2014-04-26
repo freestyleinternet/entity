@@ -18,6 +18,14 @@
 }
 
 /*
+ * Text shadow white
+*/
+@mixin textshadowset {
+	color:#fff;
+	text-shadow: #2597d0 1px 1px;
+}
+
+/*
  * Background box
 */
 @mixin boxstyle {

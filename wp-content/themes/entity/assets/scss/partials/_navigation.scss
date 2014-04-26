@@ -84,6 +84,10 @@ nav {
 		-o-transition: height 0.3s ease-in;
 		-ms-transition: height 0.3s ease-in;
 		transition: height 0.3s ease-in;
+		border-top:1px solid $brand-dark;
+		li a {
+			color:#000;
+		}
 	}
 }
 .navigation-menu > ul > li:hover ul ul, .navigation-menu > ul > li > a:hover ul ul{
@@ -106,13 +110,20 @@ nav {
 }
 .navigation-menu ul ul li {
    @include bp(tablet) {
-	   background-color:$brand-red;
+	   background-color:#f0f0f0;
 		min-width:317px;
+		border-right:1px solid $brand-dark;
+		border-left:1px solid $brand-dark;
 		-webkit-transition: background-color 0.3s ease;
 		-moz-transition: background-color 0.3s ease;
 		-o-transition: background-color 0.3s ease;
 		-ms-transition: background-color 0.3s ease;
 		transition: background-color 0.3s ease;
+		&:last-child {
+			border-bottom-left-radius:em(5);
+			border-bottom-right-radius:em(5);
+			border-bottom:1px solid $brand-dark;
+		}
    }
 }
 /* unfortunate ie7 gap fix */

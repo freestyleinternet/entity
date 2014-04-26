@@ -27,8 +27,16 @@
 #next {
 	right:0;
 	background:url(#{$assetPath}/right-arrow-slider.png) no-repeat top right;
+	&:hover {
+		background:url(#{$assetPath}/right-arrow-slider-hover.png) no-repeat top right;
+		@include transition (all 0.3s ease-in 0s);
+	}
 }
 #prev {	
 	left:0;
 	background:url(#{$assetPath}/left-arrow-slider.png) no-repeat top left;
+	&:hover {
+		background:url(#{$assetPath}/left-arrow-slider-hover.png) no-repeat top left;
+		@include transition (all 0.3s ease-in 0s);
+	}
 }

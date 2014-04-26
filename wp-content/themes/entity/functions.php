@@ -27,7 +27,7 @@ Misc Theme Functions
 function custom_image_sizes() {
     add_theme_support('post-thumbnails');
 	add_image_size('slide', 940, 300, TRUE);
-
+	add_image_size('partners', 102, 43, TRUE);
 }
 add_action('after_setup_theme', 'custom_image_sizes');
 
