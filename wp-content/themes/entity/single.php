@@ -3,34 +3,49 @@
         <main role="main">
             
             <div class="wrapper">
-            	<section>
-					<?php while ( have_posts() ) : the_post(); ?>
+            	<?php the_breadcrumb() ?> 
+                
+                <section>
+					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         <h1><?php the_title(); ?></h1>
-                        <div class="first"><?php the_field('first_paragraph_of_content_goes_here'); ?></div>
-                        <blockquote>
-                            
-                            <?php if( $featureimage = get_field('quote_feature_image') ): ?>
-                                <img src="<?php echo $featureimage; ?>">
-                            <?php endif; ?>
-                            
-                            <p class="quote"><?php the_field('quote'); ?></p>
-                            <p><?php the_field('quote_by'); ?></p>
-                        </blockquote>
-                        <div class="secondbody"><?php the_content(); ?></div>
-                        <div class="sharethisbar"><?php get_template_part( 'templates/partials/inc-socialbuttons'); ?></div>
-                        <div class="downloads">
-                        	<h1>Related links</h1>
-                            <p>Arriving the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley it to make a type specimen book. It has survivedchanged. </p>
-                            <a href="#">www.urlpartner.com/FWT</a>
-						</div>
-                        <a class="yellowimg leftarrow thinner" href="<?php bloginfo('url'); ?>/news/">NEWS</a>
-                    <?php endwhile; ?>
+                        <?php if( get_field('upload_image') ): ?>
+							<img class="topright" src="<?php the_field('upload_image'); ?>">	
+						<?php endif; ?>
+						<?php 
+							if ( has_post_thumbnail() ) { 
+								the_post_thumbnail('feature', array('class' => 'alignright'));
+							}
+						?>
+                        <?php the_content(); ?>
+                        <?php if( get_field('documents') ): ?>
+                            <div class="downloads">
+                                <h3><?php the_field('link_documents_title'); ?></h3>
+                                <?php while(the_repeater_field('documents')): ?>
+									<a href="<?php echo the_sub_field('document_upload'); ?>" target="_blank"><?php echo the_sub_field('document_name'); ?></a>
+                            	<?php  endwhile; ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endwhile; endif; ?>
                 </section>
                 
-                <?php get_sidebar(); ?>
+                <aside class="right-menu-bar">
+                	<a class="col h-feature" href="#">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/images/home-feature-1.jpg">
+                        <h1>About Entity</h1>
+                        <p>For the latest Enterprise data management and the centra of what we education and finance sectors. Find out how Entity is implementing game changing technology in the technical</p>
+                        <span>Find out more about Entity</span>
+                    </a>
+                    <a class="col h-feature" href="#">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/images/home-feature-1.jpg">
+                        <h1>About Entity</h1>
+                        <p>For the latest Enterprise data management and the centra of what we education and finance sectors. Find out how Entity is implementing game changing technology in the technical</p>
+                        <span>Find out more about Entity</span>
+                    </a>
+                </aside>
             </div>
             
         </main> <!-- /#main -->
 <?php get_footer(); ?>
+
 
 

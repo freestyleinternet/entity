@@ -1,3 +1,12 @@
+.banner {
+	display:none;
+	@include bp(tablet) {
+		display:block;
+	}
+}
+.page-products .banner {
+	margin-bottom:em(20);
+}
 .cycle-slideshow {
 	display:none;
 	width:100%;
@@ -38,5 +47,39 @@
 	&:hover {
 		background:url(#{$assetPath}/left-arrow-slider-hover.png) no-repeat top left;
 		@include transition (all 0.3s ease-in 0s);
+	}
+}
+.slider-container .cycle-pager {
+	position:absolute;
+	bottom:em(8);
+	width:100%;
+	z-index:200;
+	display:none;
+	visibility:hidden;
+	text-align:center;
+	@include bp(desktop) {
+		display:block;
+		visibility:visible;
+	}
+	span {
+		display:inline-block;
+		width: 13px;
+		height: 13px;
+		text-indent: -999em;
+		background:$light-blue;
+		margin-right: 8px;
+		cursor:pointer;
+		text-indent:-10000px;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		text-align:center;
+		&.cycle-pager-active,
+		&:hover {
+			background:$brand-dark;
+		}
+		&:last-child {
+			margin-right:0;
+		}
 	}
 }

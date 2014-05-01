@@ -1,40 +1,87 @@
 /* Other websites */
-.bottomblock {
+.style_one {
+	position:relative;
+	top:-5px;
+	article {
+		position:relative;
+		width:100%;
+		display:inline-block;
+		padding-bottom:em(20);
+		border-bottom:1px dashed $brand-dark;
+		&:last-of-type {
+			border-bottom:none;
+		}
+		h1 {
+			margin-top:em(42);
+			margin-bottom:em(7);
+		}
+		img.topright {
+			top:em(10);
+		}
+	}
+}
+
+.style_two article {
+	position:relative;
 	width:100%;
 	display:inline-block;
-	padding:em(14) 0;
-	margin-top:em(23);
-	border-top:1px solid $brand-dark;
-	h1 {
-		color:#000;
-		font-size:em(18);
-		font-weight:700;
-		margin-bottom:em(15);
+	padding-top:em(20);
+	padding-bottom:em(10);
+	border-bottom:1px dashed $brand-dark;
+	&:last-of-type {
+		border-bottom:none;
 	}
-	article { 
-		display:inline-block;
-		margin-bottom:em(19);
-		img {
-			float:left;
-			margin-top:em(4);
-			width:30%;
-			margin-right:5%; 
-			@include bp(tablet) { 
-				width:11.29032258064516%; /*  70 / 620 */
-				margin-right:1.93548387096774%; /*  12 / 620 */
-			}
-		}
-		p, span {
-			float:right;
-			width:65%;
-			font-size:em(14);
-			line-height:20px;
-			margin:0;
-			word-wrap:break-word;
-			@include bp(tablet) { 
-				width:86.7741935483871%;  /*  538 / 620 */
-			}
-		}
+	p {
+		margin-bottom:0;
+	}
+}
+
+.search-results  .style_two article {
+	@include background(linear-gradient(#eeeeee, #ffffff) left repeat);
+}
+
+article.first {
+	margin-top:em(10);
+	h1 {
+		font-size:em(16);
+		font-weight:400;
+	}
+	span {
+		font-size:em(12);
+		color:$light-blue;
+		text-decoration:underline;
+	}
+}
+
+.style_three {
+	position:relative;
+	width:100%;
+	display:inline-block;
+	h1.more {
+		position:relative;
+		top:em(17);
+		color:#000;
+		font-size:em(14);
+		font-weight:700;
+		z-index:200;
+	}
+}
+.style_three article {
+	position:relative;
+	width:100%;
+	display:inline-block;
+	padding:em(20) em(8) em(5) em(8);
+	border-top:1px dashed $brand-dark;
+	@include background(linear-gradient(#eeeeee, #ffffff) left repeat);
+	p {
+		margin-bottom:0;
+	}
+	span {
+		float:right;
+		color:#000;
+		font-size:em(12);
+		font-weight:700;
+		margin-top:em(5);
 	}
 }
 

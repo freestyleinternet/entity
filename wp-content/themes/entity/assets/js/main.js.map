@@ -1,1 +1,1 @@
-{"version":3,"file":"assets/js/main.min.js","sources":["source/main.js"],"names":["jQuery","meanmenu"],"mappings":"CAAA,WAGCA,OAAO,OAAOC,YAEZD"}
+{"version":3,"file":"assets/js/main.min.js","sources":["source/main.js"],"names":["$","screen","width","mmenu","click","e","preventDefault","this","find","toggleClass","jQuery"],"mappings":"CAAA,SAAUA,GAELC,OAAOC,OAAO,KAEjBF,EAAE,YAAYG,QAMfH,EAAE,WAAWI,MAAM,SAASC,GAC3BA,EAAEC,iBACFN,EAAEO,MAAMC,KAAK,OAAOC,YAAY,yBAI/BC"}

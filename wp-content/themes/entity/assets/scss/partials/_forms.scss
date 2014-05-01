@@ -22,6 +22,9 @@ main fieldset  {
 		float:right;
 		width:auto;
 	}
+	label {
+		padding-top:2px;
+	}
 }
 label {
 	float:left;
@@ -29,7 +32,7 @@ label {
 	display:block;
 	font-size:em(14);
 	margin-right:em(7);
-	line-height:em(24);
+
 }
 input, textarea {
 	float:left;

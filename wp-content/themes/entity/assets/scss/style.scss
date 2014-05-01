@@ -22,9 +22,12 @@ Version: 1.0
 // Globals
 @import "partials/global";
 
+// Mobile menu
+@import "partials/pageslide";
+
 // Page and Site Styles
+
 @import "partials/navigation";
-@import "partials/meannav";
 @import "partials/page";
 @import "partials/posts";
 @import "partials/widgets";
@@ -32,6 +35,7 @@ Version: 1.0
 @import "partials/comments";
 @import "partials/forms";
 @import "partials/slider";
+@import "partials/lightbox";
 
 // Helper Classes, Media Queries, Print, Etc
 @import "partials/helpers";

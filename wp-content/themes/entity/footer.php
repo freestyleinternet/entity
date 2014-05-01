@@ -3,49 +3,55 @@
                         
                         <div class="foot-col">
                         	<h2>About us</h2>
-                            <ul>
-                                <li><a href="#">Vision &amp; values</a></li>
-                            </ul>
+                            <?php
+								wp_nav_menu(
+									array(
+									'menu'		  => 'footer-about',
+									'container'       => '',
+									'menu_class'	=> ''
+								));
+							?>
                             <h2>Solutions</h2>
-                            <ul class="last">
-                                <li><a href="#">Overview</a></li>
-                                <li><a href="#">Governance</a></li>
-                                <li><a href="#">Structured Data</a></li>
-                                <li><a href="#">Unstructured Data</a></li>
-                                <li><a href="#">Meta Data</a></li>
-                                <li><a href="#">Master Data</a></li>
-                                <li><a href="#">Reference Data</a></li>
-                                <li><a href="#">Output</a></li>
-                            </ul>
+                            <?php
+								wp_nav_menu(
+									array(
+									'menu'		  => 'footer-solutions',
+									'container'       => '',
+									'menu_class'	=> 'last'
+								));
+							?>
                         </div>
                         
                         <div class="foot-col">
                         	<h2>Sectors</h2>
-                            <ul>
-                                <li><a href="#">Finance &amp; Insurance</a></li>
-                                <li><a href="#">Central Government &amp; Municipalities</a></li>
-                                <li><a href="#">Automotive</a></li>
-                                <li><a href="#">Transport Facilities</a></li>
-                                <li><a href="#">Healthcare &amp; Pharmaceutical</a></li>
-                            </ul>
+                            <?php
+								wp_nav_menu(
+									array(
+									'menu'		  => 'footer-sectors',
+									'container'       => '',
+									'menu_class'	=> ''
+								));
+							?>
                             <h2>Products</h2>
-                            <ul class="last">
-                                <li><a href="#">Enterprise Information </a></li>
-                                <li><a href="#">Management – Strategy Study</a></li>
-                                <li><a href="#">Single View Citizen</a></li>
-                                <li><a href="#">Single View Patient</a></li>
-                                <li><a href="#">Global Identity Master</a></li>
-                            </ul>
+                            <?php
+								wp_nav_menu(
+									array(
+									'menu'		  => 'footer-products',
+									'container'       => '',
+									'menu_class'	=> 'last'
+								));
+							?>
                         </div>
                         
                         <div class="foot-col">
-                            <ul class="important-list">
-                                <li><a href="#">Customer References</a></li>
-                                <li><a href="#">Partners</a></li>
-                                <li><a href="#">News &amp; Events</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Legal page</a></li>
-                            </ul>
+                            <?php
+								wp_nav_menu(
+									array(
+									'menu'		  => 'footer-main',
+									'container'       => '',
+									'menu_class'	=> 'important-list'
+								));
+							?>
 						</div>
                         
                         <div class="foot-col single rightalign">
@@ -57,13 +63,13 @@
                                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/partner3.png">
                                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/partner4.png">
                             </div>
-                            <p class="copy">Copyright Entity 2011</p>
+                            <p class="copy">Copyright Entity <?php echo date('Y'); ?></p>
 						</div>
                         
                     </footer>
                 </div>
-
-    		</div> <!-- End of pageContent -->
+    
+    </div> <!-- End of container --> 
  
     <?php wp_footer(); ?>
 </body>

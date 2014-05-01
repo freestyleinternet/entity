@@ -23,19 +23,96 @@ add_action( 'tgmpa_register', 'mb_register_required_plugins' );
 /****************************************
 Misc Theme Functions
 *****************************************/
+
 // add featured image support
 function custom_image_sizes() {
     add_theme_support('post-thumbnails');
 	add_image_size('slide', 940, 300, TRUE);
 	add_image_size('partners', 102, 43, TRUE);
+	add_image_size('feature', 520, 9999, TRUE);
+	add_image_size('template-icon', 80, 999, TRUE);
+	add_image_size('lightbox-small', 230, 999, TRUE);
+	add_image_size('lightbox-large', 1000, 999, TRUE);
+	add_image_size('logoicon', 100, 999, TRUE);
+	add_image_size('partner', 220, 80, TRUE);
+	add_image_size('postthumb', 280, 999, TRUE);
+	add_image_size('sideboxfeat', 220, 999, TRUE);
+	add_image_size('homefeature', 330, 999, TRUE);
 }
 add_action('after_setup_theme', 'custom_image_sizes');
+
+
+// add breadcrumb support
+function the_breadcrumb() {
+
+    $sep = '<span>»</span>';
+
+    if (!is_front_page()) {
+
+        echo '<div class="breadcrumbs">';
+        echo '<a href="';
+        echo get_option('home');
+        echo '">';
+       	echo 'Home';
+        echo '</a>' . $sep;
+
+        if (is_category() || is_single() ){
+            the_category('title_li=');
+        } elseif (is_archive() || is_single()){
+            if ( is_day() ) {
+                printf( __( '%s', 'text_domain' ), get_the_date() );
+            } elseif ( is_month() ) {
+                printf( __( '%s', 'text_domain' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'text_domain' ) ) );
+            } elseif ( is_year() ) {
+                printf( __( '%s', 'text_domain' ), get_the_date( _x( 'Y', 'yearly archives date format', 'text_domain' ) ) );
+            } else {
+                _e( 'Blog Archives', 'text_domain' );
+            }
+        }
+
+        if (is_single()) {
+            echo $sep;
+            ?>
+             <p><?php  the_title(); ?></p>
+            <?php
+        }
+        if (is_page()) {
+        ?>
+         <p><?php  the_title(); ?></p>
+        <?php
+        }
+
+        if (is_home()){
+            global $post;
+            $page_for_posts_id = get_option('page_for_posts');
+            if ( $page_for_posts_id ) { 
+                $post = get_page($page_for_posts_id);
+                setup_postdata($post);
+                the_title();
+                rewind_posts();
+            }
+        }
+
+        echo '</div>';
+    }
+}
 
 /**
  * Define custom post type capabilities for use with Members
  */
 function mb_add_post_type_caps() {
 	// mb_add_capabilities( 'portfolio' );
+}
+
+/**
+ * Remove width and height from images
+ */
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+
+function remove_width_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
 }
 
 /**
@@ -51,10 +128,10 @@ add_filter( 'upload_mimes', 'cc_mime_types' );
 /**
  * Use same template for all services pages
  */
-$page_children = get_pages('child_of=15');
+$page_children = get_pages('child_of=27');
 foreach($page_children as $child){
 	$current_page_template = get_post_meta($child->ID,'_wp_page_template',true);
-	if($current_page_template != 'page-our-services-single.php') update_post_meta($child->ID,'_wp_page_template','page-our-services-single.php');
+	if($current_page_template != 'page-products-single.php') update_post_meta($child->ID,'_wp_page_template','page-products-single.php');
 }
 
 function the_url( $url ) {
@@ -63,16 +140,6 @@ function the_url( $url ) {
  
 add_filter( 'login_headerurl', 'the_url' );
 
-/**
- * Blog search function to search blog only
- */
-function SearchFilter($query) {
-    if ($query->is_search) {
-        $query->set('post_type', 'post');
-    }
-    return $query;
-}
-add_filter('pre_get_posts','SearchFilter');
 
 /**
  * Filter Yoast SEO Metabox Priority
@@ -117,35 +184,36 @@ function feature_init()
 		'hierarchical' 		  		=> false,
 		'menu_position' 		 	=> NULL,
 	);
+
 	
 	/* ----------------------------------------------------
-	Our People
+	Partner
 	---------------------------------------------------- */
 	
 	$labels = array
 	(
-		'name'						=> 'Our People',
-		'singular_name' 			=> 'Our People',
-		'add_new' 			  		=> _x('Add New', 'Person'),
-		'add_new_item' 		 	=> 'Add Person',
-		'edit_item' 					=> 'Edit Person',
-		'new_item' 			 	=> 'New Person',
-		'view_item' 				=> 'View People',
-		'search_items' 		 	=> 'Search People',
-		'not_found' 				=> 'No People found',
-		'not_found_in_trash'  => 'No People found in Trash',
+		'name'						=> 'Partners',
+		'singular_name' 			=> 'Partner',
+		'add_new' 			  		=> _x('Add New', 'Partner'),
+		'add_new_item' 		 	=> 'Add Partner',
+		'edit_item' 					=> 'Edit Partner',
+		'new_item' 			 	=> 'New Partner',
+		'view_item' 				=> 'View Partners',
+		'search_items' 		 	=> 'Search Partners',
+		'not_found' 				=> 'No Partners found',
+		'not_found_in_trash'  => 'No Partners found in Trash',
 		'parent_item_colon' 	=> '',
-		'menu_name' 				=> 'Our People'
+		'menu_name' 				=> 'Partners'
 	);
 	
 	$args['labels'] 				= $labels;
 	$args['supports'] 		  	= array('title','editor','thumbnail');
-	$args['rewrite']		   		= array('slug' => 'people');
+	$args['rewrite']		   		= array('slug' => 'partners');
 	$args['menu_icon']		 	= get_bloginfo('template_directory').'/assets/images/people-admin.png';
 	$args['show_in_menu']	= true;
 	$args['has_archive']	    = true;
 	
-	register_post_type('people', $args);
+	register_post_type('partners', $args);
 	
 	flush_rewrite_rules();
 	
@@ -159,8 +227,8 @@ function feature_init()
 		'singular_name' 			=> 'Case Study',
 		'add_new' 			  		=> _x('Add New', 'Case Study'),
 		'add_new_item' 		 	=> 'Add Case Study',
-		'edit_item' 					=> 'Edit Case Study',
-		'new_item' 			 	=> 'New Case Study',
+		'edit_item' 					=> 'Edit Case Studies',
+		'new_item' 			 	=> 'New Case Studies',
 		'view_item' 				=> 'View Case Studies',
 		'search_items' 		 	=> 'Search Case Studies',
 		'not_found' 				=> 'No Case Studies found',
@@ -171,8 +239,8 @@ function feature_init()
 	
 	$args['labels'] 				= $labels;
 	$args['supports'] 		  	= array('title','editor','thumbnail');
-	$args['rewrite']		   		= array('slug' => 'casestudies');
-	$args['menu_icon']		 	= get_bloginfo('template_directory').'/assets/images/casestudy-admin.png';
+	$args['rewrite']		   		= array('slug' => 'casestudy');
+	$args['menu_icon']		 	= get_bloginfo('template_directory').'/assets/images/people-admin.png';
 	$args['show_in_menu']	= true;
 	$args['has_archive']	    = true;
 	

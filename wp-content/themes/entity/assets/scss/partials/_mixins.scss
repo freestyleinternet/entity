@@ -36,6 +36,16 @@
 }
 
 /*
+ * Contact box
+*/
+@mixin boxstylecontact {
+	padding:em(10) em(10);
+	border-radius:3px;
+	@include background(linear-gradient(#6cccfe, #6cccfe) left repeat);
+	box-shadow:1px 1px 3px 1px #dcdbdb;
+}
+
+/*
  * Boarder box
 */
 @mixin borderbox {
